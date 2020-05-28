@@ -35,12 +35,12 @@ function getCountOfLeapYears(day, month, year) {
 
 function getCountOfDays(day, month, year) {
   let days = 0;
-
+  
   days += day; //плюсуем колл-во дней
-  days += month * 30; //дней с месяцев
+  days += (month - 1) * 30; //вот она моя ошибка, не учел что первый месяц и год еще не несут в себе ничего
   days += getCountOfLeapYears(day, month, year); //высокосных дней со свех годов
-  days += year * 12 * 30; // дней с годов
-
+  days += (year - 1) * 12 * 30; // и тут ошибка была
+  
   return days;
 }
 
@@ -54,9 +54,8 @@ function getCountOfDays(day, month, year) {
 function getDayIndex(day, month, year) {
   year = year % 1000; // каждые 1000 лет все повторяется
   days = getCountOfDays(day, month, year);
-  console.log();
 
-  let res = days % 7;
+  let res = (days + 5) % 7; //смещение календаря
 
   return res;
 }
