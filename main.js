@@ -13,7 +13,7 @@ function isLeap(year) {
 function getCountOfLeapYears(day, month, year) {
   let res = 0;
 
-  if (year > 9) {
+  if (year >= 5) {
     res++;
   }
   for (let i = 10; i <= year; i++) {
